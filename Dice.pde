@@ -2,18 +2,22 @@ void setup()
 {
   size(1000, 1000);
   noLoop();
+  textSize(20);
 }
 void draw()
 {
   background((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+  int sumDots = 0;
   for (int y = 0; y <= 1000; y = y + 70)
   {
     for (int x = 0; x <= 1000; x = x + 70)
     {
       Die bob = new Die (x,y);
-      bob.show();//forloop for a lot of dice
+      bob.show();
+      sumDots = sumDots + bob.num;
     }
   }
+  text("Total:" + sumDots, 500,500);
 }
 void mousePressed()
 {
@@ -21,12 +25,9 @@ void mousePressed()
 }
 class Die //models one single dice cube
 {
-
   int num, myX, myY;//variable declarations here
   Die(int x, int y) //constructor
   {
-
-
     myX = x;
     myY = y;
     roll(); //variable initializations here
